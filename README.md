@@ -1,2 +1,8 @@
 # morgulnet_microservices
-morgulnet microservices repository
+## Домашнее задание Docker-1
+ Установлен docker 
+ Проверена работа запуском docker run hello-world
+ Познакомился с основными командами работы с докером
+ 
+ ** Задание со *
+ Сравнил выводы docker inspect для образа и контейнера, сделал выводы
