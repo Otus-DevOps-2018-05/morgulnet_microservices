@@ -1,0 +1,33 @@
+---
+- name: Install Docker CE
+  hosts: docker-base-1
+  become: true
+  gather_facts: False
+
+  tasks:
+  - name: Add Docker apt key.
+    apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+      id: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
+      state: present
+
+  - name: Add Docker CE repository
+    apt_repository:
+      repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable"
+      state: present
+
+  - name: Install python-pip
+    apt:
+        name: python-pip
+        state: present
+
+  - name: Pip docker
+    pip:
+        name: docker
+        state: present
+
+  - name: Install docker-ce
+    apt:
+      name: docker-ce
+      state: present
+      update_cache: yes
