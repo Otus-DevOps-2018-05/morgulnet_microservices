@@ -1,4 +1,23 @@
 # morgulnet_microservices
+## Домашнее задание Docker-4
+ Разобрались с работой сети в Docker (none, hoxt, bridge)
+ Разделили сети в нашем проекте на back и front
+ UI (front) - POST,COMMENT (front,back) - DB (back)
+ Установили Docker-compose, создали docker.compose.yml
+ Добавили сети front и back.
+ Параметризовали Порт публикации сервиса UI, версии сервисов, адресацию сетей,
+ username (docker-hub) в .env файле.
+ 
+ Имя проекта можно переопределить через переменную COMPOSE_PROJECT_NAME, а также аргументом при запуске -p
+
+ Setting this is optional. If you do not set this, the COMPOSE_PROJECT_NAME defaults to the basename of the project directory
+ -p, --project-name NAME     Specify an alternate project name (default: directory name)
+
+ ** Задание со *
+ Создал docker-compose.override.yml
+ Реализован проброс папки с приложениями с докер хоста (reddit)
+ Запуск puma с флагами --debug и -w 2
+
 ## Домашнее задание Docker-3
  Приложение разбито на микросервиси, в докер контейнерах
 
