@@ -3,17 +3,17 @@ version: '3.3'
 services:
   ui:
     volumes:
-      - /reddit/ui:/app
+      - ./ui:/app
     entrypoint:
       - puma
       - --debug
       - -w 2
   post:
     volumes:
-      - /reddit/post-py:/app
+      - ./post-py:/app
   comment:
     volumes:
-      - /reddit/comment:/app
+      - ./comment:/app
     entrypoint:
       - puma
       - --debug
