@@ -22,7 +22,7 @@ variable private_key_path {
 
 variable docker_base_disk_image {
   description = "Disk image for reddit app"
-  default     = "docker-base"
+  default     = "docker-base-v2"
 }
 
 variable "count" {

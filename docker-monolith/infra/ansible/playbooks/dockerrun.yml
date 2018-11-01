@@ -1,6 +1,6 @@
 ---
 - name: Run docker container
-  hosts: docker-base-1
+  hosts: all
   become: true
   tasks:
 
@@ -13,3 +13,4 @@
         ports:
           - "9292:9292"
         state: started
+        
