@@ -22,9 +22,11 @@
  username (docker-hub) в .env файле.
  
  Имя проекта можно переопределить через переменную COMPOSE_PROJECT_NAME, а также аргументом при запуске -p
-  Setting this is optional. If you do not set this, the COMPOSE_PROJECT_NAME defaults to the basename of the project directory
+
+ Setting this is optional. If you do not set this, the COMPOSE_PROJECT_NAME defaults to the basename of the project directory
  -p, --project-name NAME     Specify an alternate project name (default: directory name)
-  ** Задание со *
+
+ ** Задание со *
  Создал docker-compose.override.yml
  Реализован проброс папки с приложениями с докер хоста (reddit)
  Запуск puma с флагами --debug и -w 2
