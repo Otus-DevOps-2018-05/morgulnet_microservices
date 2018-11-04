@@ -16,8 +16,11 @@ before_script:
 
 build_job:
   stage: build
+  tags:
+    - stage
   script:
-    - echo 'Building'
+    - sudo docker build -t reddit:latest docker-monolith
+    - sudo docker run --name reddit -d --network=host reddit:latest
 
 test_unit_job:
   stage: test
@@ -38,6 +41,41 @@ deploy_dev_job:
   environment:
     name: dev
     url: http://dev.example.com
+
+branch review:
+  stage: review
+  image: google/cloud-sdk:latest
+  script: 
+    - echo $GCLOUD_SERVICE_KEY2 > /tmp/gcloud-service-key.json
+    - gcloud auth activate-service-account --key-file=/tmp/gcloud-service-key.json
+    - gcloud compute instances create $CI_COMMIT_REF_NAME --machine-type n1-standard-1 --image https://www.googleapis.com/compute/v1/projects/docker-217715/global/images/docker-base-20181030-134748 --zone europe-west1-b
+    
+  environment:
+    name: branch/$CI_COMMIT_REF_NAME
+    url: http://$CI_ENVIRONMENT_SLUG.example.com
+    on_stop: branch_stop_review
+  only:
+    - branches
+  except:
+    - master 
+
+branch_stop_review:
+  stage: review
+  when: manual
+  environment:
+    name: branch/$CI_COMMIT_REF_NAME
+    url: http://${CI_COMMIT_REF_SLUG}.example.com
+    action: stop
+  only:
+    - branches
+  except:
+    - master
+  image:
+    name: google/cloud-sdk:latest
+  script:
+    - echo $GCLOUD_SERVICE_KEY > /tmp/gcloud-service-key.json
+    - gcloud auth activate-service-account --key-file=/tmp/gcloud-service-key.json
+    - gcloud compute instances delete $CI_COMMIT_REF_NAME --zone=europe-west1-b --quiet
 
 staging:
   stage: stage
