@@ -1,13 +1,14 @@
 resource "google_compute_instance" "docker" {
   name         = "docker-base-${count.index+1}"
-  machine_type = "g1-small"
+  machine_type = "n1-standard-1"
   zone         = "${var.zone}"
-  tags         = ["docker-base"]
+  tags         = ["docker-base-v2"]
   count        = "${var.count}"
   
   boot_disk {
     initialize_params {
       image = "${var.docker_base_disk_image}"
+      size = 70
     }
   }
 

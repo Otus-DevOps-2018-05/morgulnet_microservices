@@ -4,4 +4,4 @@ public_key_path = "~/.ssh/appuser.pub"
 
 private_key_path = "~/.ssh/appuser"
 
-disk_image = "docker-base"
+disk_image = "docker-base-v2"

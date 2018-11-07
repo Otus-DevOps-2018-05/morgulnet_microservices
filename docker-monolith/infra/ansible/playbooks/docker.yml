@@ -1,6 +1,6 @@
 ---
 - name: Install Docker CE
-  hosts: docker-base-1
+  hosts: all
   become: true
   gather_facts: False
 
@@ -31,3 +31,15 @@
       name: docker-ce
       state: present
       update_cache: yes
+
+  - name: Installing packages
+    package:
+     name: "{{ item }}"
+     state: present
+    with_items:
+    - python-setuptools
+
+  - name: Installing docker compose
+    pip:
+      name: docker-compose
+      state: present
