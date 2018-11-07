@@ -9,10 +9,6 @@
     token: "NBM_yx4PXTAn2zgVLWE8"
 
   tasks:
-  
-    - name: pull an image
-      docker_image:
-        name: gitlab/gitlab-runner:latest
     - name: pull an image
       docker_image:
         name: gitlab/gitlab-runner:latest
