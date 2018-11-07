@@ -4,15 +4,11 @@
   hosts: docker-base-1
   gather_facts: False
   vars:
-    gitlab_runner_name: "gitlab-runner-test"
+    gitlab_runner_name: "gitlab-runner"
     url: "http://35.233.87.206/"
     token: "NBM_yx4PXTAn2zgVLWE8"
 
   tasks:
-  
-    - name: pull an image
-      docker_image:
-        name: gitlab/gitlab-runner:latest
     - name: pull an image
       docker_image:
         name: gitlab/gitlab-runner:latest
@@ -27,4 +23,5 @@
           - /var/run/docker.sock:/var/run/docker.sock
     - name: register the runner with GitLab
       shell: >
+
        docker exec {{gitlab_runner_name}} gitlab-runner register --non-interactive  --executor "docker" --docker-image alpine:3 --url {{ url }} --registration-token {{ token }} --description {{gitlab_runner_name}} --run-untagged --locked="false"

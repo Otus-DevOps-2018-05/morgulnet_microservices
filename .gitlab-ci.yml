@@ -6,6 +6,7 @@ stages:
   - review
   - stage
   - production
+  - deploy
 
 variables:
  DATABASE_URL: 'mongodb://mongo/user_posts'
@@ -23,11 +24,11 @@ build_job:
     - sudo docker run --name reddit -d --network=host reddit:latest
 
 test_unit_job:
-  stage: test
-  services:
-  - mongo:latest
-  script:
-  - ruby simpletest.rb 
+ stage: test
+ services:
+ - mongo:latest
+ script:
+ - ruby simpletest.rb 
 
 test_integration_job:
   stage: test
