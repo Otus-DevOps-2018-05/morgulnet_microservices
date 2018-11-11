@@ -1,0 +1,14 @@
+global:
+  slack_api_url: 'https://hooks.slack.com/services/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'
+
+route:
+  receiver: 'slack-notifications'
+
+receivers:
+- name: 'slack-notifications'
+  slack_configs:
+  - channel: '#sergey_volchkov'
+
+- name: 'autoheal'
+  webhook_configs:
+  - url: http://autoheal:9099/alerts
