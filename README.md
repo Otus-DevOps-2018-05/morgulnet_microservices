@@ -1,4 +1,59 @@
 # morgulnet_microservices
+## Домашнее задание kubernetes-1
+Проходил туториал но были проблемы с доступом к ресурсам,
+поменял регион чтобы начать
+
+gcloud compute networks subnets create kubernetes \
+  --network kubernetes-the-hard-way \
+  --range 10.240.0.0/24 \
+  --region europe-north1
+
+for i in 0 1 2; do
+  gcloud compute instances create controller-${i} \
+    --async \
+    --boot-disk-size 200GB \
+    --can-ip-forward \
+    --image-family ubuntu-1804-lts \
+    --image-project ubuntu-os-cloud \
+    --machine-type n1-standard-1 \
+    --zone europe-north1-b \
+    --private-network-ip 10.240.0.1${i} \
+    --scopes compute-rw,storage-ro,service-management,service-control,logging-write,monitoring \
+    --subnet kubernetes \
+    --tags kubernetes-the-hard-way,controller
+done
+
+for i in 0 1 2; do
+  gcloud compute instances create worker-${i} \
+    --async \
+    --boot-disk-size 200GB \
+    --can-ip-forward \
+    --image-family ubuntu-1804-lts \
+    --image-project ubuntu-os-cloud \
+    --machine-type n1-standard-1 \
+    --zone europe-north1-b \
+    --metadata pod-cidr=10.200.${i}.0/24 \
+    --private-network-ip 10.240.0.2${i} \
+    --scopes compute-rw,storage-ro,service-management,service-control,logging-write,monitoring \
+    --subnet kubernetes \
+    --tags kubernetes-the-hard-way,worker
+done
+
+Меняем зону и регион
+gcloud config set compute/zone europe-north1-b
+gcloud config set compute/region europe-north1
+
+созданы манифесты post-deployment.yml, ui-deployment.yml, comment-deployment.yml, mongo-deployment.yml
+
+kubectl get pods
+NAME                                  READY   STATUS    RESTARTS   AGE
+busybox-bd8fb7cbd-nmkzq               1/1     Running   0          25m
+comment-deployment-6b55676957-nqbl4   1/1     Running   0          39s
+mongo-deployment-57cd8664c6-2h9gq     1/1     Running   0          58s
+nginx-dbddb74b8-2dcf7                 1/1     Running   0          23m
+post-deployment-5c65d8cd77-744tv      1/1     Running   0          48s
+untrusted                             1/1     Running   0          11m
+
 ## Домашнее задание logging-1
  • Сбор неструктурированных логов
  • Визуализация логов
