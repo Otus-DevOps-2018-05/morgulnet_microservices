@@ -1,9 +1,0 @@
-REPOSITORY                 TAG                 IMAGE ID            CREATED             SIZE
-yourname/ubuntu-tmp-file   latest              8022b9a02a0e        52 seconds ago      115MB
-hello-world                latest              4ab4c602aa5e        2 weeks ago         1.84kB
-ubuntu                     16.04               b9e15a5d1e1a        2 weeks ago         115MB
-nginx                      latest              06144b287844        2 weeks ago         109MB
-
-Сравнив вывод команд docker inspect можно понять что контейнер содержит дополнительно содержит дополнительную информацию
-в часности настройками хоста HostConfig (SecurityOpt,CpuQuota,NetworkSettings)
-Команда docker run берет Docker-образ в качестве темплейта и создает из него контейнер, который и запускается.
