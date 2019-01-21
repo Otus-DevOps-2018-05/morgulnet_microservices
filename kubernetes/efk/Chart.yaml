@@ -1,0 +1,7 @@
+---
+name: efk
+version: 1.0.0
+description: OTUS EFK
+maintainers:
+ - name: Sergey Volchkov
+   email: my@mail.com
