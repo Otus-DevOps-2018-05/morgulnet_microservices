@@ -1,4 +1,27 @@
 # morgulnet_microservices
+## Домашнее задание kubernetes-3
+• Ingress Controller
+ Заставили работать Ingress Controller как классический веб
+• Ingress
+ Создали Ingress для сервиса UI (ui-ingress.yml)
+• Secret
+ Подготовили сертификат используя IP как CN
+ Загрузили сертификат в кластер kubernetes
+• TLS
+ Настроили Ingress на прием только HTTPS траффика
+• LoadBalancer Service
+ Использовали в настроки Service UI (ui-service.yml)
+• Network Policies
+ Включили и настроили network-policy для GKE
+• PersistentVolumes
+ Создали описание PersistentVolume (mongo-volume.yml)
+• PersistentVolumeClaims
+ Создали описание PersistentVolumeClaim (PVC) (mongo-claim.yml)
+ Подключили PVC к нашим Pod'ам
+ StorageClass’ы описывают где (какой
+  провайдер) и какие хранилища создаются. (storage-fast.yml)
+ Вместо ссылки на созданный диск, теперь мы ссылаемся на StorageClass.
+
 ## Домашнее задание kubernetes-2
  Установили minikube, развернули кластер.
  Изменили манифесты манифесты *-deployment.yml
