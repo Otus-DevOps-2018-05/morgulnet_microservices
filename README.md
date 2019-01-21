@@ -1,4 +1,19 @@
 # morgulnet_microservices
+## Домашнее задание kubernetes-5
+• Развертывание Prometheus в k8s
+• Настройка Prometheus и Grafana для сбора метрик
+  Развернули Prometheus, добавили  reddit-production, post-endpoints, comment-endpoints, ui-endpoints jobs.
+  Параметризовали Dashboard-ы для работы с несколькими окружениями
+  Business_Logic_Monitoring_With_namespace.json
+	UI_Service_Monitoring_With_namespaces.json
+
+• Настройка EFK для сбора логов
+• ElasticSearch - база данных + поисковый движок
+• Fluentd - шипер (отправитель) и агрегатор логов
+• Kibana - веб-интерфейс для запросов в хранилище и
+  отображения их результатов
+ Настроили логирование используя стек EFK
+
 ## Домашнее задание kubernetes-4
 • Работа с Helm
   Установили helm и выдали иму права.
