@@ -1,0 +1,7 @@
+---
+name: elasticsearch
+version: 1.0.0
+description: OTUS elasticsearch
+maintainers:
+ - name: Sergey Volchkov
+   email: my@mail.com

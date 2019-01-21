@@ -1,0 +1,7 @@
+---
+name: fluentd
+version: 1.0.0
+description: OTUS fluentd
+maintainers:
+ - name: Sergey Volchkov
+   email: my@mail.com
